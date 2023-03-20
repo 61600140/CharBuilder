@@ -95,5 +95,14 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="monkey-ape.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Untitled2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="broken.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

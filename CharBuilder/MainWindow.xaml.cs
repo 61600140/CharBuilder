@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,12 +21,13 @@ namespace CharBuilder
     /// </summary>
     public partial class MainWindow : Window
     {
-        private RPGChar _character = new RPGChar();
         private Random _rng = new Random();
+        private RPGChar _character;
 
         public MainWindow()
         {
             InitializeComponent();
+            _character = new RPGChar(_rng);
             updateStats();
         }
 
@@ -37,7 +39,7 @@ namespace CharBuilder
 
         private void buttonRoll_Click(object sender, RoutedEventArgs e)
         {
-            _character.Roll();
+            _character.Roll(_rng);
             updateStats();
             double odds = .5;
 
@@ -46,7 +48,7 @@ namespace CharBuilder
             {
                 if (_rng.NextDouble() > odds)
                 {
-                    RPGChar r = new RPGChar()
+                    RPGChar r = new RPGChar(_rng)
                     {
                         Name = i.Content.ToString(),
                     };
@@ -55,11 +57,34 @@ namespace CharBuilder
                     _character.PartyMembers.Add(r);
                 }
             }
+            if(_character.PartyMembers.Count>0)
+            {
+                _character.PartyMembers[0].FavoriteColor = Brushes.Gray;
+            }
             listMembers.Items.Clear();
+            int it = 0;
+            //adds to party member listbox
             foreach (RPGChar r in _character.PartyMembers)
             {
+                it++;
                 ListBoxItem i = new ListBoxItem();
-                i.Content = $"{r.Name} \n STR: {r.Strength} \n INT: {r.Intelligence}";
+                i.Content = $"{r.Name} \n   STR: {r.Strength} \n   INT: {r.Intelligence} \n   DEX: {r.Dexterity}";
+                if (r.FavoriteColor == null)
+                {
+                    if (it % 2 == 0)
+                    {
+                        i.Background = new SolidColorBrush(Color.FromArgb(100, 200, 200, 200));
+                    }
+                    else
+                    {
+                        i.Background = new SolidColorBrush(Color.FromArgb(100, 255, 255, 255));
+                    }
+                }
+                else
+                {
+                    i.Background = r.FavoriteColor;
+                }
+                
                 listMembers.Items.Add(i);
             }
         }

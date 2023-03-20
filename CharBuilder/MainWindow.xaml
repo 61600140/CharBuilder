@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Image x:Name="background" HorizontalAlignment="Left" Height="450" VerticalAlignment="Top" Width="800" Source="/broken.png" Stretch="UniformToFill"/>
         <TextBox x:Name="textBoxName" HorizontalAlignment="Left" Margin="41,68,0,0" TextWrapping="Wrap" Text="Type a name here" VerticalAlignment="Top" Width="120"/>
         <Label Content="Name" HorizontalAlignment="Left" Margin="41,42,0,0" VerticalAlignment="Top"/>
         <Button x:Name="buttonUpdate" Content="Update Name" HorizontalAlignment="Left" Margin="41,91,0,0" VerticalAlignment="Top" Click="buttonUpdate_Click"/>
@@ -24,7 +25,7 @@
         <Label Content="LUK" HorizontalAlignment="Left" Margin="168,224,0,0" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBoxLuk" HorizontalAlignment="Left" Margin="212,229,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="26"/>
         <Button x:Name="buttonRoll" Content="Re-Roll" HorizontalAlignment="Left" Margin="41,271,0,0" VerticalAlignment="Top" Click="buttonRoll_Click"/>
-        <ListBox x:Name = "listPotentialMembers" Margin="289,68,307,192">
+        <ListBox x:Name = "listPotentialMembers" Margin="289,68,307,192" Background="Transparent">
             <ListBoxItem Content="Quandale Dingle"/>
             <ListBoxItem Content="Petah"/>
             <ListBoxItem Content="Kid named finger"/>
@@ -32,8 +33,9 @@
             <ListBoxItem Content="Saul Goodman"/>
         </ListBox>
         <Label Content="Potential Party Members" HorizontalAlignment="Left" Margin="289,42,0,0" VerticalAlignment="Top"/>
-        <ListBox x:Name = "listMembers" Margin="493,68,103,65"></ListBox>
+        <ListBox x:Name = "listMembers" Margin="493,68,103,65" Background="Transparent"></ListBox>
         <Label Content="Party Members" HorizontalAlignment="Left" Margin="493,42,0,0" VerticalAlignment="Top"/>
+
 
     </Grid>
 </Window>
